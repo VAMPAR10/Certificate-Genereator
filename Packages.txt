@@ -1,0 +1,4 @@
+libgl1-mesa-glx
+img2pdf==0.5.1
+opencv-python==4.10.0.84
+streamlit==1.37.1
