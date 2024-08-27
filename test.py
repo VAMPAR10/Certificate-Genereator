@@ -38,8 +38,11 @@ def generate_certificate():
 
     template_ctpt = fetch_image_from_web(template_url)
     
-    # Proceed if the image is successfully fetched
+    
     if template_ctpt is not None:
+        file_bytes = np.asarray(bytearray(template_ctpt.read()), dtype=np.uint8)
+        template_ctpt = cv2.imdecode(file_bytes, 1)
+    
         equipment_tested_to_specifications = dict(zip(equipment_tested_choices, specifications_choices))
         specifications = equipment_tested_to_specifications[equipment_tested]
 
@@ -75,57 +78,57 @@ def generate_certificate():
             
         frequency = "50 Hz"
 
-        if st.button("Generate Certificate"):
-            cv2.putText(template_ctpt, equipment_tested, (960, 660), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-            cv2.putText(template_ctpt, customer_name, (960, 710), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-            cv2.putText(template_ctpt, specifications, (960, 760), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+    if st.button("Generate Certificate"):
+        cv2.putText(template_ctpt, equipment_tested, (960, 660), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+        cv2.putText(template_ctpt, customer_name, (960, 710), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+        cv2.putText(template_ctpt, specifications, (960, 760), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
 
-            if equipment_tested == equipment_tested_choices[3]:
-                cv2.putText(template_ctpt, transformer_ratio, (960, 915), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, "11 KV/ 110 V", (1600, 915), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, rated_voltage, (960, 960), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, rated_voltage, (1600, 960), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, hsv, (960, 1010), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, hsv, (1600, 1010), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, burden_l, (960, 1060), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, burden_r, (1600, 1060), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, accuracy_class_l, (960, 1100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, accuracy_class_r, (1600, 1100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, ilv, (960, 1150), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, ilv, (1600, 1150), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, frequency, (960, 1200), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, frequency, (1600, 1200), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, stc, (960, 1245), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, "1.2 TIMES CONT. & 1.5 FOR 30 SEC.", (1600, 1300), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-            else:
-                cv2.putText(template_ctpt, transformer_ratio, (960, 875), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, rated_voltage, (960, 925), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, hsv, (960, 975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, burden, (960, 1035), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, accuracy_class, (960, 1100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, ilv, (960, 1150), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, frequency, (960, 1200), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(template_ctpt, stc, (960, 1245), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                if equipment_tested == equipment_tested_choices[0]:
-                    cv2.putText(template_ctpt, "Voltage Factor", (360, 1300), 0, 1, (0, 0, 0), 3, cv2.LINE_AA)
-                    cv2.putText(template_ctpt, "1.2 TIMES CONT. & 1.5 FOR 30 SEC.", (960, 1300), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+        if equipment_tested == equipment_tested_choices[3]:
+            cv2.putText(template_ctpt, transformer_ratio, (960, 915), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, "11 KV/ 110 V", (1600, 915), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, rated_voltage, (960, 960), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, rated_voltage, (1600, 960), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, hsv, (960, 1010), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, hsv, (1600, 1010), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, burden_l, (960, 1060), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, burden_r, (1600, 1060), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, accuracy_class_l, (960, 1100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, accuracy_class_r, (1600, 1100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, ilv, (960, 1150), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, ilv, (1600, 1150), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, frequency, (960, 1200), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, frequency, (1600, 1200), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, stc, (960, 1245), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, "1.2 TIMES CONT. & 1.5 FOR 30 SEC.", (1600, 1300), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+        else:
+            cv2.putText(template_ctpt, transformer_ratio, (960, 875), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, rated_voltage, (960, 925), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, hsv, (960, 975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, burden, (960, 1035), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, accuracy_class, (960, 1100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, ilv, (960, 1150), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, frequency, (960, 1200), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            cv2.putText(template_ctpt, stc, (960, 1245), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+            if equipment_tested == equipment_tested_choices[0]:
+                cv2.putText(template_ctpt, "Voltage Factor", (360, 1300), 0, 1, (0, 0, 0), 3, cv2.LINE_AA)
+                cv2.putText(template_ctpt, "1.2 TIMES CONT. & 1.5 FOR 30 SEC.", (960, 1300), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
 
-            st.write("Certificate generated!")
+        st.write("Certificate generated!")
 
-                
-            # Encode image to bytes
-            is_success, buffer = cv2.imencode(".jpg", template_ctpt)
-            jpg_data = buffer.tobytes()
+            
+        # Encode image to bytes
+        is_success, buffer = cv2.imencode(".jpg", template_ctpt)
+        jpg_data = buffer.tobytes()
 
-             # Convert image to PDF
-            pdf_data = img2pdf.convert(jpg_data)
-                
-            # Provide download button
-            st.download_button(
-                label="Download Certificate as PDF",
-                data=pdf_data,
-                file_name="certificate.pdf",
-                mime="application/pdf"
-            )
+         # Convert image to PDF
+        pdf_data = img2pdf.convert(jpg_data)
+            
+        # Provide download button
+        st.download_button(
+            label="Download Certificate as PDF",
+            data=pdf_data,
+            file_name="certificate.pdf",
+            mime="application/pdf"
+        )
 
 generate_certificate()
