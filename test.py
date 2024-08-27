@@ -2,14 +2,6 @@ import cv2
 import streamlit as st
 import img2pdf
 import numpy as np
-import urllib.request
-
-def fetch_image_from_web(url):
-    # Fetch image from the web
-    resp = urllib.request.urlopen(url)
-    image = np.asarray(bytearray(resp.read()), dtype="uint8")
-    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-    return image
 
 def generate_certificate():
     equipment_tested_choices = ["11 KV INDOOR VOLTAGE TRANSFORMER-P.T. (Epoxy Resin Type)",
@@ -27,20 +19,13 @@ def generate_certificate():
 
     st.title("Certificate Generator")
     
+    template_ctpt_file = st.file_uploader("Upload the certificate template:", type=["jpg", "png"])
+    
     equipment_tested = st.selectbox("Select equipment tested:", equipment_tested_choices)
     customer_name = st.text_input("Enter customer name:")
 
-    # URLs for the template images
-    if equipment_tested == equipment_tested_choices[3]:
-        template_url = 'https://github.com/VAMPAR10/Certificate-Genereator/blob/master/ct%20pt.jpg'
-    else:
-        template_url = 'https://github.com/VAMPAR10/Certificate-Genereator/blob/master/CT.jpg'
-
-    template_ctpt = fetch_image_from_web(template_url)
-    
-    
-    if template_ctpt is not None:
-        file_bytes = np.asarray(bytearray(template_ctpt.read()), dtype=np.uint8)
+    if template_ctpt_file is not None:
+        file_bytes = np.asarray(bytearray(template_ctpt_file.read()), dtype=np.uint8)
         template_ctpt = cv2.imdecode(file_bytes, 1)
     
         equipment_tested_to_specifications = dict(zip(equipment_tested_choices, specifications_choices))
