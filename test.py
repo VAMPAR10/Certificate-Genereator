@@ -18,12 +18,12 @@ def generate_certificate():
     accuracy_choices = ["0.2s", "0.2", "0.5", "0.5s", "1"]
 
     st.title("Certificate Generator")
-
+    
     template_ctpt_file = st.file_uploader("Upload the certificate template:", type=["jpg", "png"])
     
     equipment_tested = st.selectbox("Select equipment tested:", equipment_tested_choices)
     customer_name = st.text_input("Enter customer name:")
-    
+
     if template_ctpt_file is not None:
         file_bytes = np.asarray(bytearray(template_ctpt_file.read()), dtype=np.uint8)
         template_ctpt = cv2.imdecode(file_bytes, 1)
@@ -114,6 +114,6 @@ def generate_certificate():
             data=pdf_data,
             file_name="certificate.pdf",
             mime="application/pdf"
-            )
+        )
 
 generate_certificate()
