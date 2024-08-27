@@ -19,10 +19,10 @@ def generate_certificate():
 
     st.title("Certificate Generator")
 
+    template_ctpt_file = st.file_uploader("Upload the certificate template:", type=["jpg", "png"])
+    
     equipment_tested = st.selectbox("Select equipment tested:", equipment_tested_choices)
     customer_name = st.text_input("Enter customer name:")
-    
-    template_ctpt_file = st.file_uploader("Upload the certificate template:", type=["jpg", "png"])
     
     if template_ctpt_file is not None:
         file_bytes = np.asarray(bytearray(template_ctpt_file.read()), dtype=np.uint8)
