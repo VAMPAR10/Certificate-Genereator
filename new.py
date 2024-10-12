@@ -20,9 +20,9 @@ def generate_certificate():
                               "The Following Routine Test conforming to IS:2705/1992 & 3156/1992"]
     
     image_urls = [
-    "https://raw.githubusercontent.com/your-username/your-repo/main/image1.jpg",
-    "https://raw.githubusercontent.com/your-username/your-repo/main/image2.jpg",
-    "https://raw.githubusercontent.com/your-username/your-repo/main/image3.jpg"
+    "https://github.com/VAMPAR10/Certificate-Genereator/blob/master/PT.jpg",
+    "https://github.com/VAMPAR10/Certificate-Genereator/blob/master/CT_page-0001.jpg",
+    "https://github.com/VAMPAR10/Certificate-Genereator/blob/master/CPT_page-0001.jpg"
     ]   
     
     images = []
