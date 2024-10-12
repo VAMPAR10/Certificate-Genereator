@@ -20,10 +20,11 @@ def generate_certificate():
                               "The Following Routine Test conforming to IS:2705/1992 & 3156/1992"]
     
     image_urls = [
-    "https://github.com/VAMPAR10/Certificate-Genereator/blob/master/PT.jpg",
-    "https://github.com/VAMPAR10/Certificate-Genereator/blob/master/CT_page-0001.jpg",
-    "https://github.com/VAMPAR10/Certificate-Genereator/blob/master/CPT_page-0001.jpg"
-    ]   
+    "https://drive.google.com/uc?export=download&id=1TssutykX7StqVwCkml1YcWbpwxTJ3Pt3",
+    "https://drive.google.com/uc?export=download&id=1iIXs4Dv3Ysj8-64JrH7cXvimM49iWx8-",
+    "https://drive.google.com/uc?export=download&id=1W8GGBp4FC2DGfFBevN1WoU_gub__y8-g"
+    ]
+   
     
     images = []
     for url in image_urls:
@@ -37,16 +38,25 @@ def generate_certificate():
     st.title("Certificate Generator")
     
     template_names = ["PT", "CT", "CPT"]
-    template_ctpt_file = st.selectbox("Select a certificate template:", template_names)
     #template_ctpt_file = st.file_uploader("Upload the certificate template:", type=["jpg", "png"])
     
     equipment_tested = st.selectbox("Select equipment tested:", equipment_tested_choices)
     customer_name = st.text_input("Enter customer name:")
-
-    if template_ctpt_file is not None:
-        file_bytes = np.asarray(bytearray(template_ctpt_file.read()), dtype=np.uint8)
-        template_ctpt = cv2.imdecode(file_bytes, 1)
+    template_ctpt_file = st.selectbox("Select a certificate template:", template_names)
     
+    if template_ctpt_file is not None:
+        #file_bytes = np.asarray(bytearray(template_ctpt_file.read()), dtype=np.uint8)
+        #template_ctpt = cv2.imdecode(file_bytes, 1)
+
+        # Map selected template to image index
+        template_index = template_names.index(template_ctpt_file)
+        selected_image = images[template_index]
+        
+        # Convert PIL Image to OpenCV format
+        file_bytes = np.asarray(bytearray(selected_image.tobytes()), dtype=np.uint8)
+        img_array = np.array(selected_image)
+        template_ctpt = cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR)
+        
         equipment_tested_to_specifications = dict(zip(equipment_tested_choices, specifications_choices))
         specifications = equipment_tested_to_specifications[equipment_tested]
         current_date = datetime.now().date()
