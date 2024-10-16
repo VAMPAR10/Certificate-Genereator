@@ -37,12 +37,12 @@ def generate_certificate():
 
     st.title("Certificate Generator")
     
-    template_names = ["PT", "CT", "CPT"]
+    template_names = ["PT", "CT, LT CT", "CT PT"]
     #template_ctpt_file = st.file_uploader("Upload the certificate template:", type=["jpg", "png"])
     
+    template_ctpt_file = st.selectbox("Select a certificate template:", template_names)
     equipment_tested = st.selectbox("Select equipment tested:", equipment_tested_choices)
     customer_name = st.text_input("Enter customer name:")
-    template_ctpt_file = st.selectbox("Select a certificate template:", template_names)
     
     if template_ctpt_file is not None:
         #file_bytes = np.asarray(bytearray(template_ctpt_file.read()), dtype=np.uint8)
@@ -100,49 +100,49 @@ def generate_certificate():
         
         if equipment_tested == equipment_tested_choices[1] or equipment_tested_choices[2] or equipment_tested_choices[3]:
             if accuracy_class == accuracy_choices[1] or accuracy_choices[2]:
-                perccent_voltage_error_1 = [str(round(random.uniform(-0.75, 0.75), 3)) for _ in range(6)]
+                perccent_voltage_error_1 = [str(round(random.uniform(-0.75, 0.75), 2)) for _ in range(6)]
                 phase_displacement_minutes_1 =  [str(round(random.uniform(0, 30.0), 2)) for _ in range(6)]
-                perccent_voltage_error_5 =  [str(round(random.uniform(-0.35, 0.35), 3)) for _ in range(6)]
+                perccent_voltage_error_5 =  [str(round(random.uniform(-0.35, 0.35), 2)) for _ in range(6)]
                 phase_displacement_minutes_5 =  [str(round(random.uniform(0, 15.0), 2)) for _ in range(6)]
-                perccent_voltage_error_20 =  [str(round(random.uniform(-0.2, 0.2), 3)) for _ in range(6)]
+                perccent_voltage_error_20 =  [str(round(random.uniform(-0.2, 0.2), 2)) for _ in range(6)]
                 phase_displacement_minutes_20 =  [str(round(random.uniform(0, 10.0), 2)) for _ in range(6)]
-                perccent_voltage_error_100 =  [str(round(random.uniform(-0.2, 0.2), 3)) for _ in range(6)]
+                perccent_voltage_error_100 =  [str(round(random.uniform(-0.2, 0.2), 2)) for _ in range(6)]
                 phase_displacement_minutes_100 =  [str(round(random.uniform(0, 10.0), 2)) for _ in range(6)]
-                perccent_voltage_error_120 = [str(round(random.uniform(-0.2, 0.2), 3)) for _ in range(6)]
+                perccent_voltage_error_120 = [str(round(random.uniform(-0.2, 0.2), 2)) for _ in range(6)]
                 phase_displacement_minutes_120 = [str(round(random.uniform(0, 10.0), 2)) for _ in range(6)]
-            if accuracy_class == accuracy_choices[3] or accuracy_choices[4]:
-                perccent_voltage_error_1 = [str(round(random.uniform(-1.5, 1.5), 3)) for _ in range(6)]
+            elif accuracy_class == accuracy_choices[3] or accuracy_choices[4]:
+                perccent_voltage_error_1 = [str(round(random.uniform(-1.5, 1.5), 2)) for _ in range(6)]
                 phase_displacement_minutes_1 = [str(round(random.uniform(0, 90.0), 2)) for _ in range(6)]
-                perccent_voltage_error_5 = [str(round(random.uniform(-0.75, 0.75), 3)) for _ in range(6)]
+                perccent_voltage_error_5 = [str(round(random.uniform(-0.75, 0.75), 2)) for _ in range(6)]
                 phase_displacement_minutes_5 = [str(round(random.uniform(0, 45.0), 2)) for _ in range(6)]
-                perccent_voltage_error_20 = [str(round(random.uniform(-0.5, 0.5), 3)) for _ in range(6)]
+                perccent_voltage_error_20 = [str(round(random.uniform(-0.5, 0.5), 2)) for _ in range(6)]
                 phase_displacement_minutes_20 = [str(round(random.uniform(0, 30.0), 2)) for _ in range(6)]
-                perccent_voltage_error_100 = [str(round(random.uniform(-0.5, 0.5), 3)) for _ in range(6)]
+                perccent_voltage_error_100 = [str(round(random.uniform(-0.5, 0.5), 2)) for _ in range(6)]
                 phase_displacement_minutes_100 = [str(round(random.uniform(0, 30.0), 2)) for _ in range(6)]
-                perccent_voltage_error_120 = [str(round(random.uniform(-0.5, 0.5), 3)) for _ in range(6)]
+                perccent_voltage_error_120 = [str(round(random.uniform(-0.5, 0.5), 2)) for _ in range(6)]
                 phase_displacement_minutes_120 = [str(round(random.uniform(0, 30.0), 2)) for _ in range(6)]
             
         if equipment_tested == equipment_tested_choices[0]:
             if accuracy_class == accuracy_choices[0]:
-                perccent_voltage_error = [str(round(random.uniform(-0.1, 0.1), 3)) for _ in range(18)]
+                perccent_voltage_error = [str(round(random.uniform(-0.1, 0.1), 2)) for _ in range(18)]
                 phase_displacement_minutes = [str(round(random.uniform(0, 5.0), 2)) for _ in range(18)]
-                crads = [str(round(random.uniform(0, 0.2), 3)) for _ in range(18)]
+                crads = [str(round(random.uniform(0, 0.2), 2)) for _ in range(18)]
             elif accuracy_class == accuracy_choices[2]:
-                perccent_voltage_error = [str(round(random.uniform(-0.2, 0.2), 3)) for _ in range(18)]
+                perccent_voltage_error = [str(round(random.uniform(-0.2, 0.2), 2)) for _ in range(18)]
                 phase_displacement_minutes = [str(round(random.uniform(0, 10.0), 2)) for _ in range(18)]
-                crads = [str(round(random.uniform(0, 0.2), 3)) for _ in range(18)]
+                crads = [str(round(random.uniform(0, 0.2), 2)) for _ in range(18)]
             elif accuracy_class == accuracy_choices[3]:
-                perccent_voltage_error = [str(round(random.uniform(-0.5, 0.5), 3)) for _ in range(18)]
+                perccent_voltage_error = [str(round(random.uniform(-0.5, 0.5), 2)) for _ in range(18)]
                 phase_displacement_minutes = [str(round(random.uniform(0, 20.0), 2)) for _ in range(18)]
-                crads = [str(round(random.uniform(0, 0.2), 3)) for _ in range(18)]
+                crads = [str(round(random.uniform(0, 0.2), 2)) for _ in range(18)]
             elif accuracy_class == accuracy_choices[5]:
-                perccent_voltage_error = [str(round(random.uniform(-1.0, 1.0), 3)) for _ in range(18)]
+                perccent_voltage_error = [str(round(random.uniform(-1.0, 1.0), 2)) for _ in range(18)]
                 phase_displacement_minutes = [str(round(random.uniform(0, 40.0), 2)) for _ in range(18)]
-                crads = [str(round(random.uniform(0, 0.2), 3)) for _ in range(18)]
+                crads = [str(round(random.uniform(0, 0.2), 2)) for _ in range(18)]
             elif accuracy_class == accuracy_choices[6]:
-                perccent_voltage_error = [str(round(random.uniform(-3.0, 3.0), 3)) for _ in range(18)]
+                perccent_voltage_error = [str(round(random.uniform(-3.0, 3.0), 2)) for _ in range(18)]
                 phase_displacement_minutes = ["-"] * 6  
-                crads = [str(round(random.uniform(0, 0.2), 3)) for _ in range(18)]                 
+                crads = [str(round(random.uniform(0, 0.2), 2)) for _ in range(18)]                 
 
     if st.button("Generate Certificate"):
         # Write for PT Certificates
@@ -410,152 +410,118 @@ def generate_certificate():
           cv2.putText(template_ctpt, accuracy_class_r, (1625, 970), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           cv2.putText(template_ctpt, stc, (825, 1020), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           cv2.putText(template_ctpt, "1.2 TIMES CONT. & 1.5 FOR 30 SEC.", (1625, 1065), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, burden, (570, 2000), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, burden, (570, 2105), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, burden, (570, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, burden, (500, 2515), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, burden, (500, 2615), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, burden, (500, 2725), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, burden, (520, 1995), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, burden, (520, 2100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, burden, (520, 2210), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, burden, (500, 2510), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, burden, (500, 2620), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, burden, (500, 2715), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           cv2.putText(template_ctpt, current_date_str, (470, 3040), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           
-          cv2.putText(template_ctpt, perccent_voltage_error_120[0], (1125, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_100[0], (1245, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_120[0], (1130, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_100[0], (1250, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           cv2.putText(template_ctpt, perccent_voltage_error_20[0], (1370, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           cv2.putText(template_ctpt, perccent_voltage_error_5[0], (1495, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           cv2.putText(template_ctpt, perccent_voltage_error_1[0], (1620, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_120[1], (1740, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_100[1], (1865, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_20[1], (1990, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_120[1], (1745, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_100[1], (1870, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_20[1], (1995, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           cv2.putText(template_ctpt, perccent_voltage_error_5[1], (2115, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           cv2.putText(template_ctpt, perccent_voltage_error_1[1], (2240, 1975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_120[2], (1125, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_100[2], (1245, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_20[2], (1370, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_5[2], (1495, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_1[2], (1620, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_120[3], (1740, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_100[3], (1865, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_20[3], (1990, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_5[3], (2115, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_1[3], (2240, 2155), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_120[4], (1125, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_100[4], (1245, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_20[4], (1370, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_5[4], (1495, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_1[4], (1620, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_120[5], (1740, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_100[5], (1865, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_20[5], (1990, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_5[5], (2115, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error_1[5], (2240, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_120[2], (1130, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_100[2], (1250, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_20[2], (1370, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_5[2], (1495, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_1[2], (1620, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_120[3], (1745, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_100[3], (1870, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_20[3], (1995, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_5[3], (2115, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_1[3], (2240, 2080), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_120[4], (1130, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_100[4], (1250, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_20[4], (1370, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_5[4], (1495, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_1[4], (1620, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_120[5], (1745, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_100[5], (1870, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_20[5], (1995, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_5[5], (2115, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error_1[5], (2240, 2180), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           
-          cv2.putText(template_ctpt, phase_displacement_minutes_120[0], (1055, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_100[0], (1190, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_20[0], (1320, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_5[0], (1450, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_1[0], (1580, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_120[1], (1710, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_100[1], (1845, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_20[1], (1975, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_5[1], (2105, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_1[1], (2240, 2050), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_120[2], (1055, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_100[2], (1190, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_20[2], (1320, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_5[2], (1450, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_1[2], (1580, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_120[3], (1710, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_100[3], (1845, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_20[3], (1975, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_5[3], (2105, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_1[3], (2240, 2205), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_120[4], (1055, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_100[4], (1190, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_20[4], (1320, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_5[4], (1450, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_1[4], (1580, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_120[5], (1710, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_100[5], (1845, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_20[5], (1975, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_5[5], (2105, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes_1[5], (2240, 2365), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_120[0], (1130, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_100[0], (1250, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_20[0], (1370, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_5[0], (1495, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_1[0], (1620, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_120[1], (1745, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_100[1], (1870, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_20[1], (1995, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_5[1], (2115, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_1[1], (2240, 2025), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_120[2], (1130, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_100[2], (1250, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_20[2], (1370, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_5[2], (1495, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_1[2], (1620, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_120[3], (1745, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_100[3], (1870, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_20[3], (1995, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_5[3], (2115, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_1[3], (2240, 2130), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_120[4], (1130, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_100[4], (1250, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_20[4], (1370, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_5[4], (1495, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_1[4], (1620, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_120[5], (1745, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_100[5], (1870, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_20[5], (1995, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_5[5], (2115, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes_1[5], (2240, 2230), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           
-          cv2.putText(template_ctpt, perccent_voltage_error[1], (1100, 2090), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[2], (1320, 2090), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[3], (1545, 2090), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[4], (1770, 2090), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[5], (1980, 2090), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[0], (2200, 2090), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[6], (1100, 2255), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[7], (1320, 2255), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[8], (1545, 2255), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[9], (1770, 2255), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[10], (1980, 2255), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[11], (2200, 2255), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[12], (1100, 2420), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[13], (1320, 2420), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[14], (1545, 2420), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[15], (1770, 2420), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[16], (1980, 2420), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, perccent_voltage_error[17], (2200, 2420), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          # percent_voltage_error
+          cv2.putText(template_ctpt, perccent_voltage_error[1], (1130, 2490), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[2], (1250, 2490), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[3], (1370, 2490), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[4], (1745, 2490), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[5], (1870, 2490), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[0], (1995, 2490), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[6], (1130, 2590), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[7], (1250, 2590), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[8], (1370, 2590), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[9], (1745, 2590), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[10], (1870, 2590), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[11], (1995, 2590), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[12], (1130, 2690), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[13], (1250, 2690), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[14], (1370, 2690), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[15], (1745, 2690), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[16], (1870, 2690), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, perccent_voltage_error[17], (1995, 2690), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
 
           # phase_displacement_minutes
-          cv2.putText(template_ctpt, phase_displacement_minutes[1], (1100, 2145), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[2], (1320, 2145), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[3], (1545, 2145), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[4], (1770, 2145), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[5], (1980, 2145), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[0], (2200, 2145), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[6], (1100, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[7], (1320, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[8], (1545, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[9], (1770, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[10], (1980, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[11], (2200, 2310), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[12], (1100, 2475), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[13], (1320, 2475), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[14], (1545, 2475), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[15], (1770, 2475), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[16], (1980, 2475), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-          cv2.putText(template_ctpt, phase_displacement_minutes[17], (2200, 2475), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[1], (1130, 2540), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[2], (1250, 2540), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[3], (1370, 2540), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[4], (1745, 2540), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[5], (1870, 2540), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[0], (1995, 2540), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[6], (1130, 2640), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[7], (1250, 2640), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[8], (1370, 2640), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[9], (1745, 2640), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[10], (1870, 2640), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[11], (1995, 2640), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[12], (1130, 2750), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[13], (1250, 2750), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[14], (1370, 2750), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[15], (1745, 2750), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[16], (1870, 2750), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
+          cv2.putText(template_ctpt, phase_displacement_minutes[17], (1995, 2750), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
           
-        # cv2.putText(template_ctpt, equipment_tested, (960, 660), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        # cv2.putText(template_ctpt, customer_name, (960, 710), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        # cv2.putText(template_ctpt, specifications, (960, 760), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-
-        # if equipment_tested == equipment_tested_choices[3]:
-        #     cv2.putText(template_ctpt, transformer_ratio, (960, 915), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, "11 KV/ 110 V", (1600, 915), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, rated_voltage, (960, 960), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, rated_voltage, (1600, 960), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, hsv, (960, 1010), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, hsv, (1600, 1010), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, burden_l, (960, 1060), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, burden_r, (1600, 1060), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, accuracy_class_l, (960, 1100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, accuracy_class_r, (1600, 1100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, ilv, (960, 1150), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, ilv, (1600, 1150), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, frequency, (960, 1200), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, frequency, (1600, 1200), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, stc, (960, 1245), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, "1.2 TIMES CONT. & 1.5 FOR 30 SEC.", (1600, 1300), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        # else:
-        #     cv2.putText(template_ctpt, transformer_ratio, (960, 875), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, rated_voltage, (960, 925), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, hsv, (960, 975), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, burden, (960, 1035), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, accuracy_class, (960, 1100), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, ilv, (960, 1150), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, frequency, (960, 1200), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     cv2.putText(template_ctpt, stc, (960, 1245), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-        #     if equipment_tested == equipment_tested_choices[0]:
-        #         cv2.putText(template_ctpt, "Voltage Factor", (360, 1300), 0, 1, (0, 0, 0), 3, cv2.LINE_AA)
-        #         cv2.putText(template_ctpt, "1.2 TIMES CONT. & 1.5 FOR 30 SEC.", (960, 1300), 0, 1, (0, 0, 0), 2, cv2.LINE_AA)
-
         st.write("Certificate generated!")
-
-            
+          
         # Encode image to bytes
         is_success, buffer = cv2.imencode(".jpg", template_ctpt)
         jpg_data = buffer.tobytes()
